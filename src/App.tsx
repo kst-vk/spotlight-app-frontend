@@ -8,6 +8,7 @@ import MainPage from "./components/MainPage";
 import StreamerRecord from "./components/StreamerRecord";
 import { useSseListener } from "./hooks/useSseListener";
 import { useLoadStreamers } from "./hooks/useLoadStreamers";
+import { streamerServerUrl } from "./services/StreamerService";
 function App() {
   const [appContextState, appContextDispatch] = useAppContextReducer();
   const contextValue = useMemo(() => {
@@ -16,7 +17,7 @@ function App() {
 
   useLoadStreamers(contextValue.appContextDispatch);
 
-  useSseListener(contextValue.appContextDispatch);
+  useSseListener(contextValue.appContextDispatch, streamerServerUrl);
 
   return (
     <div className="App">

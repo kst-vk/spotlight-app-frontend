@@ -1,27 +1,27 @@
 import { Streamer } from "../utils/Types";
 
-const url = "http://localhost:8000";
+export const streamerServerUrl = "http://localhost:8000";
 
 export async function getAllStreamers() {
-  return customFetch(url + "/streamers", "GET");
+  return customFetch(streamerServerUrl + "/streamers", "GET");
 }
 
 export async function getStreamer(id: string) {
-  return customFetch(url + "/streamer/" + id, "GET");
+  return customFetch(streamerServerUrl + "/streamer/" + id, "GET");
 }
 
 export function addStreamer(streamer: Streamer) {
-  return customFetch(url + "/streamers", "POST", streamer);
+  return customFetch(streamerServerUrl + "/streamers", "POST", streamer);
 }
 
 export function upvoteStreamer(id: string) {
-  return customFetch(url + "/streamers/" + id + "/vote", "PUT", {
+  return customFetch(streamerServerUrl + "/streamers/" + id + "/vote", "PUT", {
     type: "upvote",
   });
 }
 
 export function downvoteStreamer(id: string) {
-  return customFetch(url + "/streamers/" + id + "/vote", "PUT", {
+  return customFetch(streamerServerUrl + "/streamers/" + id + "/vote", "PUT", {
     type: "downvote",
   });
 }

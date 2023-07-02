@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Action } from "../utils/Enums";
 
-export const useSseListener = (dispatch: React.Dispatch<any>) => {
+export const useSseListener = (dispatch: React.Dispatch<any>, url: string) => {
   useEffect(() => {
-    const eventSource = new EventSource("http://localhost:8000/sse");
+    const eventSource = new EventSource(url + "/sse");
     eventSource.onmessage = (event: any) => {
       const data = JSON.parse(event.data);
       switch (data.type) {
@@ -29,5 +29,5 @@ export const useSseListener = (dispatch: React.Dispatch<any>) => {
     return () => {
       eventSource.close();
     };
-  }, [dispatch]);
+  }, [dispatch, url]);
 };
