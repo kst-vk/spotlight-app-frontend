@@ -1,0 +1,28 @@
+.streamers {
+  font-size: small;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 90vw;
+}
+
+.streamers td,
+#streamers th {
+  border: 1px solid #ddd;
+}
+
+.streamers tr:nth-child(even) {
+  background-color: #606060;
+}
+
+.streamers tr:hover {
+  background-color: #232121;
+}
+
+.streamers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #3e3e3e;
+  color: white;
+  border: 1px solid white;
+}

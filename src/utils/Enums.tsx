@@ -1,0 +1,9 @@
+export enum Action {
+  SHOW_ERROR,
+  HIDE_ERROR,
+  SET_STREAMERS,
+  GET_STREAMER,
+  ADD_STREAMER,
+  UPVOTE,
+  DOWNVOTE,
+}

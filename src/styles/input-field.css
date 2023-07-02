@@ -1,0 +1,22 @@
+.InputField {
+  margin-bottom: 0;
+  border-radius: 10px;
+  border-color: white;
+  background-color: rgba(128, 128, 128, 0.156);
+}
+
+.InputField > * {
+  width: 100%;
+}
+
+.InputField label,
+.InputField-error {
+  display: block;
+  font-size: 80%;
+}
+
+.InputField-error {
+  color: red;
+  padding-top: 4px;
+  padding-bottom: 12px;
+}

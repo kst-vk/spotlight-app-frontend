@@ -1,0 +1,11 @@
+.SimpleForm-container {
+  display: flex;
+  padding: 0 200px;
+  justify-content: center;
+  width: 90vw;
+}
+
+.SimpleForm-container > * {
+  width: 25%;
+  padding: 0 1vw;
+}

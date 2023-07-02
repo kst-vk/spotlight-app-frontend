@@ -1,23 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useMemo } from "react";
+import "./App.css";
+import { AppContextInstance, useAppContextReducer } from "./context/AppContext";
+import ErrorModal from "./components/ErrorModal";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "./components/MainPage";
+import StreamerRecord from "./components/StreamerRecord";
+import { useSseListener } from "./hooks/useSseListener";
+import { useLoadStreamers } from "./hooks/useLoadStreamers";
 function App() {
+  const [appContextState, appContextDispatch] = useAppContextReducer();
+  const contextValue = useMemo(() => {
+    return { appContextState, appContextDispatch };
+  }, [appContextState, appContextDispatch]);
+
+  useLoadStreamers(contextValue.appContextDispatch);
+
+  useSseListener(contextValue.appContextDispatch);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <AppContextInstance.Provider
+          value={{ appContextState, appContextDispatch }}
         >
-          Learn React
-        </a>
+          <ErrorModal />
+          <BrowserRouter>
+            <Routes>
+              <Route index element={<MainPage />} />
+              <Route path="details/:id" element={<StreamerRecord />} />
+            </Routes>
+          </BrowserRouter>
+        </AppContextInstance.Provider>
       </header>
     </div>
   );
